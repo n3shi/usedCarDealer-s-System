@@ -2,49 +2,43 @@
 System enabling remote management of the used car dealers network 
 
 ## Enable project
----
-run carAdminSystem.exe
----
+Run carAdminSystem.exe
 
 ## Caution
----
 It's only preview version so you are not able to delete anything, create new user, do a transaction or do sqlInjuction / ddos atack.<br/>
 Long time data load may be caused low azure server which was enabled to preview.
+
 ---
-
-
-
 ## Description of main app [PL]
 
 ### Opis aktorów w projekcie
----
 Baza danych jest bazą rozproszonej sieci komisów samochodowych. Zapewnia nie tylko obsługę niezbędnych funkcji realizowanych przez konkretny komis, ale również na przechowywanie informacji o samochodach, klientach, pracownikach, a także realizacją procesu transakcyjnego między klientami a komisem. 
  
 Głównymi funkcjonalnościami są:
-● Zakup pojazdu przez komis 
-● Przeglądanie samochodów w aplikacji webowej 
+● Zakup pojazdu przez komis <br\>
+● Przeglądanie samochodów w aplikacji webowej <br\>
 
 Każda zmiana wprowadzona do systemu jest zapisywana do historii, która daje możliwość prowadzenia analizy historii transakcji. 
 
-W projekcie wyróżniamy kilku aktorów: 
+W projekcie wyróżniamy kilku aktorów:
 
-Pracownik : jest odpowiedzialny za utrzymanie aktualnej bazy pojazdów i przeprowadzania transakcji. W zależności od przyznanych mu uprawnień ma możliwość: 
-•	Dodawania, usuwania, edycji danych pojazdów
-•	Sprzedaży pojazdu o Edycji swoich danych personalnych
-•	Sprawdzenia komu podlega o Wglądu w historię transakcji każdego klienta jeśli klient poda mu kod transakcji
-•	Skup pojazdów od klientów 
-•	Dodawania/usuwania danych klienta 
-•	Zmiany danych personalnych 
-•	Udostępnieniu historii transakcji  
-•	Przeglądanie najczęściej kupowanych modeli 
+Pracownik : jest odpowiedzialny za utrzymanie aktualnej bazy pojazdów i przeprowadzania transakcji. W zależności od przyznanych mu uprawnień ma możliwość: <br\>
+•	Dodawania, usuwania, edycji danych pojazdów<br\>
+•	Sprzedaży pojazdu o Edycji swoich danych personalnych<br\>
+•	Sprawdzenia komu podlega o Wglądu w historię transakcji każdego klienta jeśli klient poda mu kod transakcji<br\>
+•	Skup pojazdów od klientów <br\>
+•	Dodawania/usuwania danych klienta <br\>
+•	Zmiany danych personalnych <br\>
+•	Udostępnieniu historii transakcji  <br\>
+•	Przeglądanie najczęściej kupowanych modeli <br\>
 
 
-Manager oddziału : Jest to osoba zarządzająca pojedynczym oddziałem komisu. Ma uprawnienia do wszystkich funkcjonalności pracownika, a także:
-•	Zatrudniania i zwalniania pracowników ( tylko swojego oddziału  ). 
-•	Ustalania wypłat i stanowisk pracowników ( tylko swojego oddziału  ) 
-•	Przeglądania zysków/strat komisu 
-•	Przeglądanie najskuteczniejszych pracowników 
-•	Przeglądanie pracowników podlegających pod managera 
+Manager oddziału : Jest to osoba zarządzająca pojedynczym oddziałem komisu. Ma uprawnienia do wszystkich funkcjonalności pracownika, a także:<br\>
+•	Zatrudniania i zwalniania pracowników ( tylko swojego oddziału  )<br\> 
+•	Ustalania wypłat i stanowisk pracowników ( tylko swojego oddziału  ) <br\>
+•	Przeglądania zysków/strat komisu <br\>
+•	Przeglądanie najskuteczniejszych pracowników <br\>
+•	Przeglądanie pracowników podlegających pod managera <br\>
 
  Manager komisu - osoba upoważniona do wglądu do wszystkich tabel i funkcjonalności. Domyślnie podczas tworzenia bazy utworzone zostanie również konto Managera komisu. Posiada wszystkie funkcjonalności managera oddziału, ale w odróżnieniu od managera oddziału sam sobie jest managerem. 
    
@@ -53,36 +47,35 @@ Klient : jest osobą zainteresowaną kupnem samochodu poszukującą konkretnego 
 •	Filtrowania bazy pojazdów po dowolnych
 •	Sprawdzenia lokalizacji komisu w którym znajduje się wybrany przez niego pojazd
 ![plot](./d1.png)
----
 ### Diagram encji
----
+
 ![plot](./d2.png)
----
 
 ### Identyfikacja transakcji
----
+
 Dodanie nowego samochodu do tabeli CAR wymusza przypisanie istniejącego rekordu ze specyfikacją z tabeli SPECIFICATION lub utworzenie nowego rekordu. 
 W przypadku utworzenia nowego komisu wymagane jest również podanie rekordu z tabeli LOCATION. W przypadku braku odpowiedniego rekordu należy go dodać do tabeli.
 Dodanie użytkownika do tabeli USERS wymaga podania informacji do tabeli LOCATION odnośnie adresu zamieszkania. Należy również określić czy użytkownik jest pracownikiem czy klientem. Jeśli atrybut isWorker = 1, oznacza, że użytkownik jest pracownikiem i należy przypisać mu odpowiednio stanowisko (utworzyć, jeśli nie ma odpowiedniego), komis, managera oraz pensję. 
+
 W celu utworzenia transakcji musi zostać wybrany z bazy pracownik, klient oraz samochód. Obowiązkowo należy również podać cenę oraz rodzaj transakcji (kupno/sprzedaż -względem komisu). W przypadku braku odpowiednich rekordów należy dodać je do bazy. Wygenerowanie rekordu transakcji wiąże się z dodaniem nowego rekordu do tabeli TransactionHistory (zawierającego odpowiednie atrybuty z widoku Transakcje).
 Każda dokonana zmiana zostaje zapisana w tabeli LOG.
 Utworzenie pliku powstałego z widoku generuje automatyczny wpis do tabeli TransactionHistory.
----
+
 
 ### Sposób zapewniania spójności dla encji powiązanych
----
+
 W przypadku próby usunięcia encji która pod sobą ma jeszcze inne encje program(baza) powinna poinformować, że nastąpiła próba usunięcia encji powiązanej i zapytać się czy użytkownik chce usunąć także i powiązaną encję. Wybranie twierdzącej odpowiedzi usunie odpowiednio kolejno encje od których pobierany jest klucz główny.
 Usunięcie rekordu z tabeli LOCATION jest bezpośrednio niedostępną operacją.
+
 Próba usunięcia adresu należącego do komisu zostanie wywołane zapytanie autoryzacji. Opcja dostępna tylko dla managera komisu. Usunięcie lokacji komisu wymaga wcześniejszego usunięcia wszystkich pracowników danego komisu oraz samochodów wraz z odpowiednimi specyfikacjami. 
 W przypadku próby usunięcia adresu użytkownika zostanie wywołane zapytanie autoryzacji dostępne dla pracownika o odpowiednim statusie. Jeśli dla przynajmniej jednego użytkownika atrybut isWorker = true przed usunięciem rekordów w tabeli USERS należy również usunąć odpowiednie rekordy z tabeli EMPLOYEES. 
+
 Przed usunięciem rekordu komisu należy usunąć rekordy pracowników z tabeli USERS oraz EMPLOYEES wraz z ich adresami w tabeli LOCATIONS, oraz odpowiednie samochody z tabeli CAR.
 Usunięcie specyfikacji pojazdu z tabeli SPECIFICATION wymaga usunięcia samochodów z tabeli CAR.
 Stanowisko można usunąć tylko wtedy kiedy nie jest przyporządkowane żadnej osobie.
 Usunięcie pojazdu wymaga wcześniejszego usunięcia odpowiednich transakcji. 
----
 
 ### Opis implementacji bazy danych i serwera
----
 #### Tabele
 
 W środowisku Microsoft SQL Server Management Studio 18 została utworzona baza zgodnie z diagramem encji przedstawionym w części opisanej tą samą nazwą. Każda kolumna otrzymała typ zadeklarowany na diagramie. Podczas deklaracji każdej tabeli na odpowiednią kolumnę został dodany constraint primary key, czyli klucz główny.
