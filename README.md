@@ -15,22 +15,22 @@ Long time data load may be caused low azure server which was enabled to preview.
 Baza danych jest bazą rozproszonej sieci komisów samochodowych. Zapewnia nie tylko obsługę niezbędnych funkcji realizowanych przez konkretny komis, ale również na przechowywanie informacji o samochodach, klientach, pracownikach, a także realizacją procesu transakcyjnego między klientami a komisem. 
  
 Głównymi funkcjonalnościami są:
-● Zakup pojazdu przez komis <br\>
-● Przeglądanie samochodów w aplikacji webowej <br\>
+● Zakup pojazdu przez komis
+● Przeglądanie samochodów w aplikacji webowej
 
 Każda zmiana wprowadzona do systemu jest zapisywana do historii, która daje możliwość prowadzenia analizy historii transakcji. 
 
-W projekcie wyróżniamy kilku aktorów:
+## W projekcie wyróżniamy kilku aktorów:
 
-Pracownik : jest odpowiedzialny za utrzymanie aktualnej bazy pojazdów i przeprowadzania transakcji. W zależności od przyznanych mu uprawnień ma możliwość: <br\>
-•	Dodawania, usuwania, edycji danych pojazdów<br\>
-•	Sprzedaży pojazdu o Edycji swoich danych personalnych<br\>
-•	Sprawdzenia komu podlega o Wglądu w historię transakcji każdego klienta jeśli klient poda mu kod transakcji<br\>
-•	Skup pojazdów od klientów <br\>
-•	Dodawania/usuwania danych klienta <br\>
-•	Zmiany danych personalnych <br\>
-•	Udostępnieniu historii transakcji  <br\>
-•	Przeglądanie najczęściej kupowanych modeli <br\>
+Pracownik : jest odpowiedzialny za utrzymanie aktualnej bazy pojazdów i przeprowadzania transakcji. W zależności od przyznanych mu uprawnień ma możliwość:
+•	Dodawania, usuwania, edycji danych pojazdów
+•	Sprzedaży pojazdu o Edycji swoich danych personalnych
+•	Sprawdzenia komu podlega o Wglądu w historię transakcji każdego klienta jeśli klient poda mu kod transakcji
+•	Skup pojazdów od klientów
+•	Dodawania/usuwania danych klienta
+•	Zmiany danych personalnych
+•	Udostępnieniu historii transakcji
+•	Przeglądanie najczęściej kupowanych modeli
 
 
 Manager oddziału : Jest to osoba zarządzająca pojedynczym oddziałem komisu. Ma uprawnienia do wszystkich funkcjonalności pracownika, a także:<br\>
