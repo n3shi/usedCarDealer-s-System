@@ -14,31 +14,30 @@ Long time data load may be caused low azure server which was enabled to preview.
 ### Opis aktorów w projekcie
 Baza danych jest bazą rozproszonej sieci komisów samochodowych. Zapewnia nie tylko obsługę niezbędnych funkcji realizowanych przez konkretny komis, ale również na przechowywanie informacji o samochodach, klientach, pracownikach, a także realizacją procesu transakcyjnego między klientami a komisem. 
  
-Głównymi funkcjonalnościami są:
-● Zakup pojazdu przez komis
-● Przeglądanie samochodów w aplikacji webowej
+Głównymi funkcjonalnościami są:  
+● Zakup pojazdu przez komis  
+● Przeglądanie samochodów w aplikacji webowej  
 
 Każda zmiana wprowadzona do systemu jest zapisywana do historii, która daje możliwość prowadzenia analizy historii transakcji. 
 
 ## W projekcie wyróżniamy kilku aktorów:
 
-Pracownik : jest odpowiedzialny za utrzymanie aktualnej bazy pojazdów i przeprowadzania transakcji. W zależności od przyznanych mu uprawnień ma możliwość:
-•	Dodawania, usuwania, edycji danych pojazdów
-•	Sprzedaży pojazdu o Edycji swoich danych personalnych
-•	Sprawdzenia komu podlega o Wglądu w historię transakcji każdego klienta jeśli klient poda mu kod transakcji
-•	Skup pojazdów od klientów
-•	Dodawania/usuwania danych klienta
-•	Zmiany danych personalnych
-•	Udostępnieniu historii transakcji
-•	Przeglądanie najczęściej kupowanych modeli
+Pracownik : jest odpowiedzialny za utrzymanie aktualnej bazy pojazdów i przeprowadzania transakcji. W zależności od przyznanych mu uprawnień ma możliwość:\
+•	Dodawania, usuwania, edycji danych pojazdów\
+•	Sprzedaży pojazdu o Edycji swoich danych personalnych\
+•	Sprawdzenia komu podlega o Wglądu w historię transakcji każdego klienta jeśli klient poda mu kod transakcji\
+•	Skup pojazdów od klientów\
+•	Dodawania/usuwania danych klienta\
+•	Zmiany danych personalnych\
+•	Udostępnieniu historii transakcji\
+•	Przeglądanie najczęściej kupowanych modeli\
 
-
-Manager oddziału : Jest to osoba zarządzająca pojedynczym oddziałem komisu. Ma uprawnienia do wszystkich funkcjonalności pracownika, a także:<br\>
-•	Zatrudniania i zwalniania pracowników ( tylko swojego oddziału  )<br\> 
-•	Ustalania wypłat i stanowisk pracowników ( tylko swojego oddziału  ) <br\>
-•	Przeglądania zysków/strat komisu <br\>
-•	Przeglądanie najskuteczniejszych pracowników <br\>
-•	Przeglądanie pracowników podlegających pod managera <br\>
+Manager oddziału : Jest to osoba zarządzająca pojedynczym oddziałem komisu. Ma uprawnienia do wszystkich funkcjonalności pracownika, a także:\
+•	Zatrudniania i zwalniania pracowników ( tylko swojego oddziału  )\
+•	Ustalania wypłat i stanowisk pracowników ( tylko swojego oddziału  )\
+•	Przeglądania zysków/strat komisu\
+•	Przeglądanie najskuteczniejszych pracowników\
+•	Przeglądanie pracowników podlegających pod managera\
 
  Manager komisu - osoba upoważniona do wglądu do wszystkich tabel i funkcjonalności. Domyślnie podczas tworzenia bazy utworzone zostanie również konto Managera komisu. Posiada wszystkie funkcjonalności managera oddziału, ale w odróżnieniu od managera oddziału sam sobie jest managerem. 
    
